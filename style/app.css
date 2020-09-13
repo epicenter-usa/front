@@ -12,7 +12,7 @@
 
   --light-100: rgba( 255, 255, 255,  1  );
   --light-75:  rgba( 255, 255, 255, .75 );
-  --light-50:  rgba( 255, 255, 255, .66 ); /* visual fix */
+  --light-50:  rgba( 255, 255, 255, .66 ); /* visual fix */ /*wapo #f1f1f1;*/
   --light-25:  rgba( 255, 255, 255, .25 );
   --light-10:  rgba( 255, 255, 255, .1  );
   --light-05:  rgba( 255, 255, 255, .05 );
@@ -168,7 +168,7 @@ button {
 
 .button,
 .kicker {
-  font-family: 'Postoni Standard';
+  font-family: 'Libre Franklin';
   font-weight: 700;
   font-size: 1.8rem;
   line-height: calc( 1.8rem * 1.5 );
@@ -439,6 +439,16 @@ h1 .kicker {
   width: 100%;
   z-index: 1;
 }
+
+/* TO GIVE A MORE WaPo FEEL
+.main > article {
+  font-family: 'Postoni Standard';
+}
+
+.main > article .lead,
+.main > article .dates {
+  font-family: 'Libre Franklin';
+} */
 
 .main > article,
 .main > nav,
