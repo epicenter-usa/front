@@ -1,5 +1,79 @@
 {
+    "radius": {
+        "first_stop": {
+            "inner_point": [
+                -77.030647,
+                38.902688
+            ],
+            "outer_point": [
+                -77.02989949023437,
+                38.902688
+            ]
+        },
+        "second_stop": {
+            "inner_point": [
+                -77.030647,
+                38.902688
+            ],
+            "outer_point": [
+                -77.02497059771729,
+                38.902688
+            ]
+        },
+        "today": {
+            "inner_point": [
+                -77.030647,
+                38.902688
+            ],
+            "outer_point": [
+                -76.996897,
+                38.902688
+            ]
+        }
+    },
+    "user_county": {
+        "id": "11001",
+        "pop_2019": 672391,
+        "centroid": [
+            -77.01630267017617,
+            38.904773714587094
+        ],
+        "bbox": [
+            [
+                -77.119759,
+                38.791644999999995
+            ],
+            [
+                -76.909393,
+                38.995844999999996
+            ]
+        ]
+    },
+    "vanishing_place": {
+        "type": "place",
+        "id": "2430325",
+        "name": "Frederick",
+        "state": "MD",
+        "pop_2019": 72244,
+        "centroid": [
+            -77.41407062366127,
+            39.43358634537608
+        ],
+        "bbox": [
+            [
+                -77.478053,
+                39.392492
+            ],
+            [
+                -77.34520599999999,
+                39.488523
+            ]
+        ]
+    },
     "nearest_landmark": {
+        "place_name": "New York City",
+        "place_id": "3651000",
+        "state_abbr": "NY",
         "bbox": [
             [
                 -74.25909,
@@ -10,16 +84,14 @@
                 40.917577
             ]
         ],
-        "display_text": {
-            "complement": "a place with really bright lights",
-            "landmark": "Times Square"
-        },
         "input_point": [
             "40.757952",
             "-73.98558100000001"
         ],
-        "place_id": "3651000",
-        "place_name": "New York City",
+        "display_text": {
+            "landmark": "Times Square",
+            "complement": "a place with really bright lights"
+        },
         "radius": {
             "first_stop": {
                 "inner_point": [
@@ -51,37 +123,6 @@
                     40.757952
                 ]
             }
-        },
-        "state_abbr": "NY"
-    },
-    "radius": {
-        "first_stop": {
-            "inner_point": [-66.620918,
-            18.0102],
-            "outer_point": [-66.62017049023437,
-            18.0102]
-        },
-        "second_stop": {
-            "inner_point": [-66.620918,
-            18.0102],
-            "outer_point": [-66.61226824414062,
-            18.0102]
-        },
-        "today": {
-            "inner_point": [-66.620918,
-            18.0102],
-            "outer_point": [-66.53548831250001,
-            18.0102]
         }
-    },
-    "vanishing_place": {
-        "bbox": [[-66.715244,
-            17.831509], [-66.499601,
-            18.172479]
-        ],
-        "centroid": [-66.60725882398899,
-        18.002726643701546],
-        "id": "72113",
-        "pop_2019": 148863.0
     }
 }
