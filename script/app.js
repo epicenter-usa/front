@@ -123,20 +123,20 @@ let app = {
 
       },
 
-      "User city" : function() {
+      // "User city" : function() {
 
-        let city = app.variables.result.user_city
-        return city.name_muni /* + ' (' + city.name_state + ')' */
+      //   let city = app.variables.result.user_city
+      //   return city.name_muni /* + ' (' + city.name_state + ')' */
 
-      },
+      // },
 
       "User radius" : function() {
 
         let city = app.variables.result
 
         let km = turf.distance(
-          turf.helpers.point( city.radius.inner_point ),
-          turf.helpers.point( city.radius.outer_point )
+          turf.helpers.point( city.radius.today.inner_point ),
+          turf.helpers.point( city.radius.today.outer_point )
         )
 
         if ( km < 1 )
