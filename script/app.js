@@ -148,33 +148,33 @@ let app = {
 
       },
 
-      "Featured city 1" : function() {
+      "Nearest Landmark" : function() {
 
-        let city = app.variables.result.capitals_to_highlight[ 0 ]
-        return city.name_muni + ' (' + city.name_state + ')'
-
-      },
-
-      "Featured city 1 location" : function() {
-
-        let city = app.variables.result.capitals_to_highlight[ 0 ]
-        return city.display_text[ app.lang ].prefix + ' ' + city.display_text[ app.lang ].place
+        let city = app.variables.result.nearest_landmark;
+        return city.place_name + ' (' + city.state_abbr + ')'
 
       },
 
-      "Featured city 1 location description" : function() {
+      "Nearest Landmark location" : function() {
 
-        let city = app.variables.result.capitals_to_highlight[ 0 ]
-        return city.display_text[ app.lang ].complement || ''
+        let city = app.variables.result.nearest_landmark
+        return city.display_text.landmark
 
       },
 
-      "Featured city 1 radius" : function() {
+      "Nearest Landmark location description" : function() {
 
-        let city = app.variables.result.capitals_to_highlight[ 0 ]
+        let city = app.variables.result.nearest_landmark
+        return city.display_text.complement || ''
+
+      },
+
+      "Nearest Landmark radius" : function() {
+
+        let city = app.variables.result.nearest_landmark
         let km = turf.distance(
-          turf.helpers.point( city.radius.inner_point ),
-          turf.helpers.point( city.radius.outer_point )
+          turf.helpers.point( city.radius.today.inner_point ),
+          turf.helpers.point( city.radius.today.outer_point )
         )
 
         if ( km < 1 )
@@ -1022,9 +1022,9 @@ let app = {
 
         },
 
-        "Featured city 1" : function() {
+        "Nearest Landmark" : function() {
 
-          let city = app.variables.result.capitals_to_highlight[ 0 ]
+          let city = app.variables.result.nearest_landmark
 
           app.story.map.controls.location.fitOnScreen(
             city.bbox,
@@ -1054,9 +1054,9 @@ let app = {
           app.story.map.controls.location.toggle.mask( false )
 
         },
-        "Featured city 1 location" : function() {
+        "Nearest Landmark location" : function() {
 
-          let city = app.variables.result.capitals_to_highlight[ 0 ]
+          let city = app.variables.result.nearest_landmark
 
           app.story.map.controls.marker.toggle( false, 0 )
           app.story.map.controls.marker.toggleLabel( false, 0 )
