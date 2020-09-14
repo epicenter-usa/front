@@ -462,9 +462,9 @@ let app = {
           url += address
           url += '.json'
           url += '?'
-          url += 'country=br'
+          url += 'country=us'
           url += '&'
-          url += 'language=pt'
+          url += 'language=en'
           url += '&'
           url += 'limit=3'
           url += '&'
@@ -749,7 +749,7 @@ let app = {
 
             } else {
 
-              location = app.variables.result.capitals_to_highlight[ index - 1 ]
+              location = app.variables.result.nearest_landmark[ index - 1 ]
               center = location.radius.inner_point
               label = location.display_text[ app.lang ].place
 
@@ -786,7 +786,7 @@ let app = {
                   let radius = app.variables.result.radius
 
                   if ( index > 0 )
-                    radius = app.variables.result.capitals_to_highlight[ index - 1 ].radius
+                    radius = app.variables.result.nearest_landmark[ index - 1 ].radius
 
                   app.story.map.controls.people.highlight.insideCircle.initialize(
                     radius.inner_point,
@@ -1136,7 +1136,7 @@ let app = {
     map : {
 
       id : 'map',
-      style : 'mapbox://styles/tiagombp/ckbz4zcsb2x3w1iqyc3y2eilr?optimize=true',
+      style : 'mapbox://styles/tiagombp/cketv7ns10nox19p031mkqjbc?optimize=true', // mapbox://styles/tiagombp/ckbz4zcsb2x3w1iqyc3y2eilr?optimize=true',
       token : 'pk.eyJ1IjoidGlhZ29tYnAiLCJhIjoiY2thdjJmajYzMHR1YzJ5b2huM2pscjdreCJ9.oT7nAiasQnIMjhUB-VFvmw',
       user : undefined,
       element : document.getElementById( 'map' ),
@@ -1314,6 +1314,9 @@ let app = {
 
         let options = { mode : 'cors' }
 
+        //TIRAR DEPOIS
+        url = "./response.json";
+
         fetch( url, options )
           .then( response => response.json() )
           .then( data => {
@@ -1327,7 +1330,7 @@ let app = {
             }
 
             app.variables.result = data
-            app.element.dataset.wouldVanish = data.user_city.would_vanish
+            app.element.dataset.wouldVanish = true //TIRAR DEPOIS data.user_city.would_vanish
 
             app.variables.update()
             app.story.steps.handle()
