@@ -1,1 +1,87 @@
-{'nearest_landmark': {'bbox': [[-74.25909, 40.477399], [-73.700009, 40.917577]], 'display_text': {'complement': 'a place with really '  'bright lights',  'landmark': 'Times Square'}, 'input_point': ['40.757952', '-73.98558100000001'], 'place_id': '3651000', 'place_name': 'New York City', 'radius': {'first_stop': {'inner_point': [-73.98558100000001, 40.757952], 'outer_point': [-73.98483349023438, 40.757952]},  'second_stop': {'inner_point': [-73.98558100000001,  40.757952],  'outer_point': [-73.98125612207032,  40.757952]},  'today': {'inner_point': [-73.98558100000001,  40.757952],  'outer_point': [-73.96870600000001,  40.757952]}}, 'state_abbr': 'NY'},  'radius': {'first_stop': {'inner_point': (-66.620918, 18.0102),  'outer_point': (-66.62017049023437, 18.0102)}, 'second_stop': {'inner_point': (-66.620918, 18.0102), 'outer_point': (-66.61226824414062, 18.0102)}, 'today': {'inner_point': (-66.620918, 18.0102), 'outer_point': (-66.53548831250001, 18.0102)}},  'vanishing_place': {'bbox': [(-66.715244, 17.831509), (-66.499601, 18.172479)],  'centroid': (-66.60725882398899, 18.002726643701546),  'id': '72113',  'pop_2019': 148863.0}}
+{
+    "nearest_landmark": {
+        "bbox": [
+            [
+                -74.25909,
+                40.477399
+            ],
+            [
+                -73.700009,
+                40.917577
+            ]
+        ],
+        "display_text": {
+            "complement": "a place with really bright lights",
+            "landmark": "Times Square"
+        },
+        "input_point": [
+            "40.757952",
+            "-73.98558100000001"
+        ],
+        "place_id": "3651000",
+        "place_name": "New York City",
+        "radius": {
+            "first_stop": {
+                "inner_point": [
+                    -73.98558100000001,
+                    40.757952
+                ],
+                "outer_point": [
+                    -73.98483349023438,
+                    40.757952
+                ]
+            },
+            "second_stop": {
+                "inner_point": [
+                    -73.98558100000001,
+                    40.757952
+                ],
+                "outer_point": [
+                    -73.98125612207032,
+                    40.757952
+                ]
+            },
+            "today": {
+                "inner_point": [
+                    -73.98558100000001,
+                    40.757952
+                ],
+                "outer_point": [
+                    -73.96870600000001,
+                    40.757952
+                ]
+            }
+        },
+        "state_abbr": "NY"
+    },
+    "radius": {
+        "first_stop": {
+            "inner_point": [-66.620918,
+            18.0102],
+            "outer_point": [-66.62017049023437,
+            18.0102]
+        },
+        "second_stop": {
+            "inner_point": [-66.620918,
+            18.0102],
+            "outer_point": [-66.61226824414062,
+            18.0102]
+        },
+        "today": {
+            "inner_point": [-66.620918,
+            18.0102],
+            "outer_point": [-66.53548831250001,
+            18.0102]
+        }
+    },
+    "vanishing_place": {
+        "bbox": [[-66.715244,
+            17.831509], [-66.499601,
+            18.172479]
+        ],
+        "centroid": [-66.60725882398899,
+        18.002726643701546],
+        "id": "72113",
+        "pop_2019": 148863.0
+    }
+}
