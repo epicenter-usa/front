@@ -186,16 +186,16 @@ let app = {
 
       },
 
-      "Vanished city" : function() {
+      "Vanished place" : function() {
 
-        let city = app.variables.result.neighboring_city
-        return city.name_muni + ' (' + city.name_state + ')'
+        let city = app.variables.result.vanishing_place
+        return city.name + ' (' + city.state + ')'
 
       },
 
-      "Vanished city population" : function() {
+      "Vanished place population" : function() {
 
-        let city = app.variables.result.neighboring_city
+        let city = app.variables.result.vanishing_place
         let population = city.pop_2019
         let value = Math.round( population / 1000 )
 
@@ -211,9 +211,9 @@ let app = {
 
       },
 
-      "Vanished city population difference" : function() {
+      "Vanished place population difference" : function() {
 
-        let city = app.variables.result.neighboring_city
+        let city = app.variables.result.vanishing_place
         let population = city.pop_2019
         let deaths = app.variables.initial.deaths
         let difference = deaths - population
@@ -750,7 +750,8 @@ let app = {
             } else {
 
               location = app.variables.result.nearest_landmark[ index - 1 ]
-              center = location.radius.inner_point
+              console.log('index', index, app.variables.result.nearest_landmark[ index - 1 ])//TIRAR DEPOIS
+              center = location.radius.today.inner_point
               label = location.display_text[ app.lang ].place
 
             }
@@ -1320,6 +1321,8 @@ let app = {
         fetch( url, options )
           .then( response => response.json() )
           .then( data => {
+
+            console.log(data);//TIRAR DEPOIS
 
             if ( data.error ) {
 
