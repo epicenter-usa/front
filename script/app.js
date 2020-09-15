@@ -325,8 +325,8 @@ let app = {
 
       if ( name == 'poster' ) {
         app.poster.initialize(
-          app.variables.result.radius.inner_point,
-          app.variables.result.radius.outer_point
+          app.variables.result.radius.today.inner_point,
+          app.variables.result.radius.today.outer_point
         )
         window.poster.focus()
       }
@@ -749,10 +749,9 @@ let app = {
 
             } else {
 
-              location = app.variables.result.nearest_landmark[ index - 1 ]
-              console.log('index', index, app.variables.result.nearest_landmark[ index - 1 ])//TIRAR DEPOIS
+              location = app.variables.result.nearest_landmark
               center = location.radius.today.inner_point
-              label = location.display_text[ app.lang ].place
+              label = location.display_text.landmark
 
             }
 
@@ -790,15 +789,15 @@ let app = {
                     radius = app.variables.result.nearest_landmark[ index - 1 ].radius
 
                   app.story.map.controls.people.highlight.insideCircle.initialize(
-                    radius.inner_point,
-                    radius.outer_point,
+                    radius.today.inner_point,
+                    radius.today.outer_point,
                     index
                   )
                   app.story.map.controls.people.highlight.insideCircle.toggle( false, index )
 
                   app.story.map.controls.circle.initialize(
-                    radius.inner_point,
-                    radius.outer_point,
+                    radius.today.inner_point,
+                    radius.today.outer_point,
                     index
                   )
                   app.story.map.controls.circle.toggle( false, index )
