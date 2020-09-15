@@ -786,7 +786,7 @@ let app = {
                   let radius = app.variables.result.radius
 
                   if ( index > 0 )
-                    radius = app.variables.result.nearest_landmark[ index - 1 ].radius
+                    radius = app.variables.result.nearest_landmark.radius
 
                   app.story.map.controls.people.highlight.insideCircle.initialize(
                     radius.today.inner_point,
