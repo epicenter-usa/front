@@ -2,7 +2,7 @@ window.map = undefined
 
 let app = {
 
-  api : 'https://api.noepicentro.com/', // https://caco.app/
+  api : 'https://tiago.live/', // https://caco.app/
 
   element : document.querySelector( '.app' ),
 
@@ -123,12 +123,12 @@ let app = {
 
       },
 
-      // "User city" : function() {
+      "User city" : function() {
 
-      //   let city = app.variables.result.user_city
-      //   return city.name_muni /* + ' (' + city.name_state + ')' */
+         let city = app.variables.result.user_county
+         return city.id /* + ' (' + city.name_state + ')' */
 
-      // },
+      },
 
       "User radius" : function() {
 
@@ -804,7 +804,7 @@ let app = {
 
                 }
 
-                app.story.map.controls.location.initialize( app.variables.result.neighboring_city.code_muni )
+                app.story.map.controls.location.initialize( app.variables.result.vanishing_place.id )
                 app.story.map.controls.location.toggle.highlight( false )
                 app.story.map.controls.location.toggle.mask( false )
 
@@ -940,7 +940,9 @@ let app = {
         },
         "City that would have vanished" : function() {
 
-          let city = app.variables.result.neighboring_city
+          let city = app.variables.result.vanishing_place
+
+          console.log("City vanished", city)
 
           app.story.map.controls.marker.toggle( false, 0 )
           app.story.map.controls.marker.toggleLabel( false, 0 )
@@ -968,7 +970,7 @@ let app = {
         },
         "City vanished" : function() {
 
-          let city = app.variables.result.neighboring_city
+          let city = app.variables.result.vanishing_place
 
           app.story.map.controls.marker.toggle( false, 0 )
           app.story.map.controls.marker.toggleLabel( false, 0 )
@@ -1120,6 +1122,8 @@ let app = {
           active = document.querySelector( '.swiper-slide' )
 
         let step = active.dataset.step
+
+        console.log("Step", step)
 
         app.element.dataset.step = step
         app.story.steps.show[ step ]()
@@ -1314,9 +1318,6 @@ let app = {
 
         let options = { mode : 'cors' }
 
-        //TIRAR DEPOIS
-        url = "./response.json";
-
         fetch( url, options )
           .then( response => response.json() )
           .then( data => {
@@ -1332,7 +1333,8 @@ let app = {
             }
 
             app.variables.result = data
-            app.element.dataset.wouldVanish = true //TIRAR DEPOIS data.user_city.would_vanish
+            app.element.dataset.wouldVanish = 
+              data.user_county.id == data.vanishing_place.id
 
             app.variables.update()
             app.story.steps.handle()
