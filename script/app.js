@@ -1985,12 +1985,8 @@ let app = {
 
           highlight : function( code ) {
 
-            let wouldVanish = app.element.dataset.wouldVanish;
-            let property_name = wouldVanish ? 'GEOID' : 'place_id';
-            console.log({property_name});
-            console.log("ternario", wouldVanish ? 'GEOID' : 'place_id')
-            // if  true, we need to use the counties layer, else the places layer
-            console.log("no highlight, desapareceria?", wouldVanish, property_name)
+            let wouldVanish = app.element.dataset.wouldVanish === "true";
+            let property_name = (wouldVanish ? 'GEOID' : 'place_id');
 
           	map.addLayer( {
           			'id': 'location_highlight',
@@ -2016,8 +2012,7 @@ let app = {
 
           mask : function( code ) {
 
-            let wouldVanish = app.element.dataset.wouldVanish;
-            // if  true, we need to use the counties layer, else the places layer
+            let wouldVanish = app.element.dataset.wouldVanish === "true";
 
             code = code || app.story.map.controls.location.code
 
