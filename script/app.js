@@ -9,12 +9,8 @@ let app = {
   lang : document.documentElement.lang,
 
   error : {
-    'pt-br' : {
-      1 : 'Aparentemente, você está fora do Brasil. Quer tentar digitar um endereço?',
-      2 : 'Ops! Não conseguimos usar sua localização… Que tal digitar seu endereço?'
-    },
     'en' : {
-      1 : 'Apparently, you are outside of Brazil. Could you please try entering an address?',
+      1 : 'Apparently, you are outside of the United States. Could you please try entering an address?',
       2 : 'Oops! We were unable to use your location… How about entering your address?'
     }
   },
@@ -104,7 +100,7 @@ let app = {
       "Time since first death" : function() {
 
         let today = new Date()
-        let first = new Date( 2020, 2, 16 )
+        let first = new Date( 2020, 2, 29 )
 
         let diff = {}
 
@@ -1303,6 +1299,8 @@ let app = {
         map.keyboard.disable()
         map.dragRotate.disable()
         map.touchZoomRotate.disableRotation()
+
+        console.log(app.story.map.user);
 
         let url = app.api
 
