@@ -134,17 +134,19 @@ let app = {
 
         let city = app.variables.result
 
-        let km = turf.distance(
+        let miles = turf.distance(
           turf.helpers.point( city.radius.today.inner_point ),
-          turf.helpers.point( city.radius.today.outer_point )
+          turf.helpers.point( city.radius.today.outer_point ),
+          {units: 'miles'}
         )
 
-        if ( km < 1 )
-          return Math.round( km * 1000 ) + 'm'
+        //if ( km < 1 )
+        //  return Math.round( km * 1000 ) + 'm'
 
-        let value = Math.round( km * 10 ) / 10
+        let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
-        return  value + 'km'
+        return  value + 
+                miles < 1 ? 'mile' : 'miles'
 
       },
 
@@ -172,17 +174,19 @@ let app = {
       "Nearest Landmark radius" : function() {
 
         let city = app.variables.result.nearest_landmark
-        let km = turf.distance(
+        let miles = turf.distance(
           turf.helpers.point( city.radius.today.inner_point ),
-          turf.helpers.point( city.radius.today.outer_point )
+          turf.helpers.point( city.radius.today.outer_point ),
+          {units: 'miles'}
         )
 
-        if ( km < 1 )
-          return Math.round( km * 1000 ) + 'm'
+        //if ( km < 1 )
+        //  return Math.round( km * 1000 ) + 'm'
 
-        let value = Math.round( km * 10 ) / 10
+        let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
-        return  value + 'km'
+        return  value + 
+                miles < 1 ? 'mile' : 'miles'
 
       },
 
@@ -1165,15 +1169,16 @@ let app = {
         feature.inner = turf.helpers.point( inner )
         feature.outer = turf.helpers.point( outer)
 
-        // calculate radius in km
+        // calculate radius in miles
         feature.radius = turf.distance(
           feature.inner,
-          feature.outer
+          feature.outer,
+          {units: 'miles'}
         )
 
         return {
           center : feature.inner,
-          km : feature.radius
+          miles : feature.radius
         }
 
       },
@@ -1572,7 +1577,8 @@ let app = {
 
             let circle = turf.circle(
               radius.center,
-              radius.km
+              radius.miles,
+              {units: 'miles'}
             )
 
             map.addSource(
@@ -1696,7 +1702,8 @@ let app = {
 
                 let circle = turf.circle(
                   radius.center,
-                  radius.km
+                  radius.miles,
+                  {units: 'miles'}
                 )
 
                 let mask = turf.mask( circle )
@@ -2259,12 +2266,14 @@ let app = {
 
         let circle = turf.circle(
           radius.center,
-          radius.km
+          radius.miles,
+          {units: 'miles'}
         )
 
         let offset = turf.circle(
           radius.center,
-          radius.km
+          radius.miles,
+          {units: 'miles'}
         )
 
         let bbox = turf.bbox( offset )
