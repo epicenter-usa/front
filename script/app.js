@@ -2297,7 +2297,7 @@ let app = {
           }
         ]
 
-        let url = 'https://api.mapbox.com/styles/v1/tiagombp/ckcqo5hn702i31ipcs9f53lve/static/'
+        let url = 'https://api.mapbox.com/styles/v1/tiagombp/ckf4vguv51dqd19pcs47xms69/static/'
 
         url += 'geojson(' + overlay + ')'
         url += '/auto/'
