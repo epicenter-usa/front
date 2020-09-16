@@ -1020,7 +1020,7 @@ let app = {
           app.story.map.controls.circle.toggle( false, 2 )
           app.story.map.controls.location.toggle.highlight( false )
           app.story.map.controls.location.toggle.mask( false )
-          app.story.map.controls.location.fitOnScreen( app.story.map.bbox.br )
+          app.story.map.controls.location.fitOnScreen( app.story.map.bbox.us )
 
         },
 
@@ -1147,9 +1147,9 @@ let app = {
 
       bbox : {
 
-        br : [
-          [ -73.9872354804, -33.7683777809 ],
-          [ -34.7299934555,  5.24448639569 ]
+        us : [
+          [-129.549408, 21.999082],
+          [-63.807220,  52.305120]
         ]
 
       },
@@ -1410,7 +1410,7 @@ let app = {
               						['var', 'sqrt_deaths'],
                           0, 0,
               						1, 1,
-              						Math.sqrt(max_deaths), Math.min( ( window.innerWidth / 50 ), 20 )
+              						Math.sqrt(max_deaths), Math.min( ( window.innerWidth / 50 ), 15 )
               					]
               				]
               			}
