@@ -142,7 +142,7 @@ let app = {
         let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
         return  value + 
-                (miles < 1 ? 'mile' : ' miles')
+                (miles < 1 ? ' mile' : ' miles')
 
       },
 
@@ -182,7 +182,7 @@ let app = {
         let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
         return  value + 
-                (miles < 1 ? 'mile' : ' miles')
+                (miles < 1 ? ' mile' : ' miles')
 
       },
 
