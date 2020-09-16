@@ -1866,19 +1866,19 @@ let app = {
                 'mun',
                 {
                   'type' : 'vector',
-                  'url' : 'mapbox://tiagombp.79ib2kza'
+                  'url' : 'mapbox://tiagombp.534qejcf'
                 }
               )
 
             }
 
-            if ( !map.getLayer ( 'municipalities' ) ) {
+            if ( !map.getLayer ( 'places' ) ) {
 
               map.addLayer({
-                  'id': 'municipalities',
+                  'id': 'places',
                   'type': 'fill',
                   'source': 'mun',
-                  'source-layer': 'municipalities',
+                  'source-layer': 'vanishing_places-0bojlt',
                   'paint': {
                       'fill-opacity' : 0,
                       'fill-outline-color' : 'transparent',
@@ -1955,19 +1955,19 @@ let app = {
           			'id': 'location_highlight',
           			'type': 'fill',
           			'source': 'mun', //'composite',
-          			'source-layer': 'municipalities', //
+          			'source-layer': 'vanishing_places-0bojlt', //
           			'paint': {
           				'fill-opacity': 0,
           				'fill-color': app.color( 'highlight' )
           			},
-          			'filter': ['==', 'code_muni', '']
+          			'filter': ['==', 'place_id', '']
           		},
           		'road-label');
 
             map.setFilter(
             	'location_highlight', [
             		'==',
-            		['get', 'code_muni'],
+            		['get', 'place_id'],
             		code
               ]);
 
@@ -1977,8 +1977,8 @@ let app = {
 
             code = code || app.story.map.controls.location.code
 
-            let municipalities = map.querySourceFeatures('mun', {sourceLayer: 'municipalities'});
-            let features = municipalities.filter(d => d.properties.code_muni == code)
+            let places = map.querySourceFeatures('mun', {sourceLayer: 'vanishing_places-0bojlt'});
+            let features = places.filter(d => d.properties.place_id == code)
 
             //console.log("Quantas features?", features.length);
 
