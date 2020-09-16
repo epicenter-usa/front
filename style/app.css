@@ -572,13 +572,14 @@ small {
   background: var(--light-50);
 }
 
-.brands a:first-child img {
-  width: 8rem;
+.brands a:first-child svg {
+  width: 12.6rem;
+  height: 3.2rem;
   align-self: center;
 }
 
 .brands a:last-child img {
-  width: 19.2rem;
+  width: 14.6rem;
   align-self: center;
 }
 
