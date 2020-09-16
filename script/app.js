@@ -1865,10 +1865,10 @@ let app = {
 
           load : function() {
 
-            if ( !map.getSource( 'mun' ) ) {
+            if ( !map.getSource( 'places-src' ) ) {
 
               map.addSource(
-                'mun',
+                'places-src',
                 {
                   'type' : 'vector',
                   'url' : 'mapbox://tiagombp.534qejcf'
@@ -1882,7 +1882,7 @@ let app = {
               map.addLayer({
                   'id': 'places',
                   'type': 'fill',
-                  'source': 'mun',
+                  'source': 'places-src',
                   'source-layer': 'vanishing_places-0bojlt',
                   'paint': {
                       'fill-opacity' : 0,
@@ -1893,6 +1893,35 @@ let app = {
               'road-label');
 
             }
+
+            if ( !map.getSource( 'counties-src' ) ) {
+
+              map.addSource(
+                'counties-src',
+                {
+                  'type' : 'vector',
+                  'url' : 'mapbox://tiagombp.3udgcig6'
+                }
+              )
+
+            }
+
+            if ( !map.getLayer ( 'counties' ) ) {
+
+              map.addLayer({
+                  'id': 'counties',
+                  'type': 'fill',
+                  'source': 'counties-src',
+                  'source-layer': 'counties-dl6qdm',
+                  'paint': {
+                      'fill-opacity' : 0,
+                      'fill-outline-color' : 'transparent',
+                      'fill-color' : 'transparent'
+                  }
+              },
+              'road-label');
+
+            }            
 
           },
 
@@ -1956,23 +1985,30 @@ let app = {
 
           highlight : function( code ) {
 
+            let wouldVanish = app.element.dataset.wouldVanish;
+            let property_name = wouldVanish ? 'GEOID' : 'place_id';
+            console.log({property_name});
+            console.log("ternario", wouldVanish ? 'GEOID' : 'place_id')
+            // if  true, we need to use the counties layer, else the places layer
+            console.log("no highlight, desapareceria?", wouldVanish, property_name)
+
           	map.addLayer( {
           			'id': 'location_highlight',
           			'type': 'fill',
-          			'source': 'mun', //'composite',
-          			'source-layer': 'vanishing_places-0bojlt', //
+          			'source': wouldVanish ? 'counties-src' : 'places-src', //'composite',
+          			'source-layer': wouldVanish ? 'counties-dl6qdm' : 'vanishing_places-0bojlt', //
           			'paint': {
           				'fill-opacity': 0,
           				'fill-color': app.color( 'highlight' )
           			},
-          			'filter': ['==', 'place_id', '']
+          			'filter': ['==', property_name, '']
           		},
           		'road-label');
 
             map.setFilter(
             	'location_highlight', [
             		'==',
-            		['get', 'place_id'],
+            		['get', property_name],
             		code
               ]);
 
@@ -1980,10 +2016,21 @@ let app = {
 
           mask : function( code ) {
 
+            let wouldVanish = app.element.dataset.wouldVanish;
+            // if  true, we need to use the counties layer, else the places layer
+
             code = code || app.story.map.controls.location.code
 
-            let places = map.querySourceFeatures('mun', {sourceLayer: 'vanishing_places-0bojlt'});
-            let features = places.filter(d => d.properties.place_id == code)
+            let places = map.querySourceFeatures(
+              wouldVanish ? 'counties-src' : 'places-src', 
+              {
+                sourceLayer: wouldVanish ? 'counties-dl6qdm' : 'vanishing_places-0bojlt'
+              }
+              );
+              
+            let property_name = wouldVanish ? 'GEOID' : 'place_id';
+
+            let features = places.filter(d => d.properties[property_name] == code)
 
             //console.log("Quantas features?", features.length);
 
