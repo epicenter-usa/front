@@ -2,7 +2,7 @@ window.map = undefined
 
 let app = {
 
-  api : 'https://tiago.live/', // https://caco.app/
+  api : 'https://epicenter-covid.elections.aws.wapo.pub/', //'https://tiago.live/',
 
   element : document.querySelector( '.app' ),
 
