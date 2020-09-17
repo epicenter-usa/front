@@ -219,7 +219,7 @@ let app = {
         let difference = deaths - population
 
         if ( difference < 1000 )
-          return difference
+          return "approximately"
 
         let value = Math.round( difference / 1000 )
         let string
@@ -230,7 +230,7 @@ let app = {
         if ( app.lang == 'en' )
           string = new Intl.NumberFormat( app.lang ).format( value * 1000 )
 
-        return string
+        return string + ' less than'
 
       },
 
