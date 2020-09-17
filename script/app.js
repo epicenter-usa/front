@@ -31,6 +31,8 @@ let app = {
 
   },
 
+  data : {},
+
   parameters : {
 
     deaths : undefined,
@@ -121,8 +123,27 @@ let app = {
 
       "User city" : function() {
 
-         let city = app.variables.result.user_county
-         return city.id /* + ' (' + city.name_state + ')' */
+        let path = document.documentElement.getAttribute( 'path' )
+
+        if ( app.data.counties ) {
+
+          let id = app.variables.result.user_county.id
+          return app.data.counties[ id ]
+
+        } else {
+
+          fetch( path + 'data/counties.json' )
+            .then(response => response.json())
+            .then(data => {
+
+              app.data.counties = data
+              app.variables.update( [ "User city" ] )
+
+            })
+
+        }
+
+        return '…'
 
       },
 
@@ -141,7 +162,7 @@ let app = {
 
         let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
-        return  value + 
+        return  value +
                 (miles < 1 ? ' mile' : ' miles')
 
       },
@@ -181,7 +202,7 @@ let app = {
 
         let value = Math.round( miles * 10 ) / 10
         value = new Intl.NumberFormat( app.lang ).format( value )
-        return  value + 
+        return  value +
                 (miles < 1 ? ' mile' : ' miles')
 
       },
@@ -1336,7 +1357,7 @@ let app = {
             }
 
             app.variables.result = data
-            app.element.dataset.wouldVanish = 
+            app.element.dataset.wouldVanish =
               data.user_county.id == data.vanishing_place.id
 
             app.variables.update()
@@ -1921,7 +1942,7 @@ let app = {
               },
               'road-label');
 
-            }            
+            }
 
           },
 
@@ -2017,12 +2038,12 @@ let app = {
             code = code || app.story.map.controls.location.code
 
             let places = map.querySourceFeatures(
-              wouldVanish ? 'counties-src' : 'places-src', 
+              wouldVanish ? 'counties-src' : 'places-src',
               {
                 sourceLayer: wouldVanish ? 'counties-dl6qdm' : 'vanishing_places-0bojlt'
               }
               );
-              
+
             let property_name = wouldVanish ? 'GEOID' : 'place_id';
 
             let features = places.filter(d => d.properties[property_name] == code)
