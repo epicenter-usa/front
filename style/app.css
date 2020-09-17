@@ -30,19 +30,24 @@
 
 /* fonts */
 
-/*
+
 @font-face {
-  font-family: Piaui;
-  src: url(../fonts/piaui/piaui-regular.woff) format('woff');
-  font-weight: 500;
-}
-*/
-/*
-@font-face {
-  font-family: Piaui;
-  src: url(../fonts/piaui/piaui-bold.woff) format('woff');
+  font-family: 'Postoni Wide';
+  src: url(../fonts/washington-post/PostoniWide-Bold.woff) format('woff');
   font-weight: 700;
-} */
+}
+
+@font-face {
+  font-family: 'Franklin ITC';
+  src: url(../fonts/washington-post/Franklin-ITC-Light.woff) format('woff');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Franklin ITC';
+  src: url(../fonts/washington-post/Franklin-ITC-Bold.woff) format('woff');
+  font-weight: 700;
+}
 
 
 /* general */
@@ -94,7 +99,8 @@ html {
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Libre Franklin' , sans-serif;
+  font-family: 'Franklin ITC' , sans-serif;
+  font-weight: 300;
   line-height: 1.5;
   font-size: 1.8rem;
   text-rendering: auto;
@@ -111,7 +117,7 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--light-100);
-  font-family: 'Postoni Standard', sans-serif;
+  font-family: 'Postoni Wide', sans-serif;
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 3.2rem;
@@ -168,9 +174,9 @@ button {
 
 .button,
 .kicker {
-  font-family: 'Libre Franklin';
+  font-family: 'Franklin ITC';
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: calc( 1.4rem * 1.5 );
   text-transform: uppercase;
   letter-spacing: .2rem;
@@ -1682,7 +1688,7 @@ input[type="checkbox"]:checked + div .switch::before {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  font-family: 'Postoni Standard';
+  font-family: 'Postoni Wide';
   font-size: 26px;
   font-variant: normal;
 }
