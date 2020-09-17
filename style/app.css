@@ -170,8 +170,8 @@ button {
 .kicker {
   font-family: 'Libre Franklin';
   font-weight: 700;
-  font-size: 1.8rem;
-  line-height: calc( 1.8rem * 1.5 );
+  font-size: 1.4rem;
+  line-height: calc( 1.4rem * 1.5 );
   text-transform: uppercase;
   letter-spacing: .2rem;
   margin: 0;
