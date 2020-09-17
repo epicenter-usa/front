@@ -37,12 +37,12 @@
   font-weight: 500;
 }
 */
-
+/*
 @font-face {
   font-family: Piaui;
   src: url(../fonts/piaui/piaui-bold.woff) format('woff');
   font-weight: 700;
-}
+} */
 
 
 /* general */
@@ -557,6 +557,7 @@ small {
 .brands,
 .brands a {
   display: flex;
+  align-items: center;
 }
 
 .brands a {
@@ -572,15 +573,19 @@ small {
   background: var(--light-50);
 }
 
-.brands a:first-child svg {
-  width: 12.6rem;
-  height: 3.2rem;
-  align-self: center;
+.brands a:first-child img {
+  width: 19.2rem;
+  height: 2.95rem;
 }
 
 .brands a:last-child img {
-  width: 14.6rem;
-  align-self: center;
+  width: 19.2rem;
+  height: 2.066rem;
+}
+
+.brands a:first-child,
+.brands .pipe {
+  display: none;
 }
 
 dl::before {
@@ -624,8 +629,9 @@ dt {
 
 @media( min-width: 800px ) {
 
-  .brands {
-    /* margin-top: 19.6rem; */
+  .brands a:first-child,
+  .brands .pipe {
+    display: flex;
   }
 
   .main {
@@ -1578,7 +1584,7 @@ input[type="checkbox"]:checked + div .switch::before {
 
 .poster figure {
   max-width: 64rem;
-  width: 100%;
+  width: 75%;
 }
 
 .poster figure .poster-canvas {
@@ -1788,7 +1794,22 @@ input[type="checkbox"]:checked + div .switch::before {
   width: 100%;
 }
 
-.poster .brands > img:last-child {
+.poster .brands a,
+.poster .brands .pipe {
+  display: flex;
+}
+
+.poster .brands a:first-child img {
+  width: 192px;
+  height: 29.5px;
+}
+
+.poster .brands a + a img {
+  width: 192px;
+  height: 20.66px;
+}
+
+.poster .brands > img {
   position: absolute;
   bottom: 0;
   left: 0;
