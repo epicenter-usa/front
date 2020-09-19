@@ -4,6 +4,21 @@ let app = {
 
   api : 'https://epicenter-covid.elections.aws.wapo.pub/', //'https://tiago.live/',
 
+  tilesets : {
+           
+    'places' : {
+      'source' : 'places-src',
+      'layer'  : 'vanishing_places-0bojlt',
+      'id'     : 'place_id'
+    },
+
+    'counties' : {
+      'source' : 'counties-src',
+      'layer'  : 'counties-dl6qdm',
+      'id'     : 'GEOID'
+    }
+  },
+
   element : document.querySelector( '.app' ),
 
   lang : document.documentElement.lang,
@@ -2007,25 +2022,28 @@ let app = {
           highlight : function( code ) {
 
             let wouldVanish = app.element.dataset.wouldVanish === "true";
-            let property_name = (wouldVanish ? 'GEOID' : 'place_id');
+
+            let geography = (wouldVanish ? 'counties' : 'places');
+
+            console.log(geography)
 
           	map.addLayer( {
           			'id': 'location_highlight',
           			'type': 'fill',
-          			'source': wouldVanish ? 'counties-src' : 'places-src', //'composite',
-          			'source-layer': wouldVanish ? 'counties-dl6qdm' : 'vanishing_places-0bojlt', //
+          			'source': app.tilesets[geography].source,
+          			'source-layer': app.tilesets[geography].layer,
           			'paint': {
           				'fill-opacity': 0,
           				'fill-color': app.color( 'highlight' )
           			},
-          			'filter': ['==', property_name, '']
+          			'filter': ['==', app.tilesets[geography].id, '']
           		},
           		'road-label');
 
             map.setFilter(
             	'location_highlight', [
             		'==',
-            		['get', property_name],
+            		['get', app.tilesets[geography].id],
             		code
               ]);
 
@@ -2034,21 +2052,19 @@ let app = {
           mask : function( code ) {
 
             let wouldVanish = app.element.dataset.wouldVanish === "true";
+            let geography = (wouldVanish ? 'counties' : 'places');
+            let property_name = app.tilesets[geography].id;
 
             code = code || app.story.map.controls.location.code
 
             let places = map.querySourceFeatures(
-              wouldVanish ? 'counties-src' : 'places-src',
+              app.tilesets[geography].source,
               {
-                sourceLayer: wouldVanish ? 'counties-dl6qdm' : 'vanishing_places-0bojlt'
+                sourceLayer: app.tilesets[geography].layer
               }
-              );
-
-            let property_name = wouldVanish ? 'GEOID' : 'place_id';
+            );
 
             let features = places.filter(d => d.properties[property_name] == code)
-
-            //console.log("Quantas features?", features.length);
 
             if ( features.length ) {
 
