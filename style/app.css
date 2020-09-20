@@ -1443,7 +1443,8 @@ input[type="checkbox"]:checked + div .switch::before {
 }
 
 [data-step="First death"] .hint:nth-of-type(2),
-[data-step="Following deaths"] .hint:nth-of-type(2) {
+[data-step="Following deaths"] .hint:nth-of-type(2),
+[data-step="After two months"] .hint:nth-of-type(2) {
   /* display: flex; */
   transform: translateY( 0 );
   opacity: 1;
