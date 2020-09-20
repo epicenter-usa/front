@@ -819,7 +819,7 @@ console.log(url)
 
                 app.story.map.controls.people.initialize()
                 app.story.map.controls.people.toggle( { opacity: 1, radius: 1.5, color: '#555' } )
-                app.story.map.controls.people.highlight.someInsideCircle.initialize( 47 )
+                app.story.map.controls.people.highlight.someInsideCircle.initialize( 94 )
                 app.story.map.controls.people.highlight.someInsideCircle.toggle( false, 'first-death' )
                 app.story.map.controls.people.highlight.someInsideCircle.toggle( false, 'first-deaths' )
 
@@ -1276,7 +1276,7 @@ console.log(url)
 
           }
 
-          first_47 = undefined
+          first_94 = undefined
 
           app.story.map.controls.marker.reset()
 
@@ -1818,8 +1818,8 @@ console.log(url)
                 if ( map.getLayer( name ) )
                   return false
 
-                let first_47;
-                let first_47_len = 0;
+                let first_94;
+                let first_94_len = 0;
 
                 let center = app.story.map.user;
                 let center_pt = turf.helpers.point(center);
@@ -1831,7 +1831,7 @@ console.log(url)
               		layers: ["water", "landuse", "national-park"]
               	});
 
-                while (first_47_len < amount) {
+                while (first_94_len < amount) {
 
                   // defines the circle for this iteration
                   let radius = radiuses[tries];
@@ -1866,42 +1866,42 @@ console.log(url)
 
                   // test if there were any, and updates the points collected so far
                   if (inside_points) {
-                    if (first_47) {
-                      first_47.features = [...first_47.features, ...inside_points.features]
-                    } else first_47 = inside_points;
+                    if (first_94) {
+                      first_94.features = [...first_94.features, ...inside_points.features]
+                    } else first_94 = inside_points;
                   }
 
-                  first_47_len = first_47.features.length;
+                  first_94_len = first_94.features.length;
 
-                  // console.log("Quantidade até agora ", first_47_len, first_47);
+                  // console.log("Quantidade até agora ", first_94_len, first_94);
 
                   // test if we got the amount needed, then break. else, increase circle radius and repeat.
-                  if (first_47_len >= amount) {
-                    first_47.features = [...first_47.features].slice(0,47);
-                    // console.log("Opa, chegou. ", first_47);
+                  if (first_94_len >= amount) {
+                    first_94.features = [...first_94.features].slice(0, amount);
+                    // console.log("Opa, chegou. ", first_94);
                     break
                   }
 
                   tries ++
 
-                  // edge cases scenario: if couldn't generate 47 points in liveable areas in
+                  // edge cases scenario: if couldn't generate 94 points in liveable areas in
                   // a 2.5km radius, just place the rest anywhere, regardless if in liveable area or not
                   if (tries > radiuses.length - 1) {
                     //console.log("Não deu, vai em qq lugar.")
-                    let any_random_points = turf.random.randomPoint(amount - first_47_len, {bbox: bboxCircle});
-                    first_47.features = [...first_47.features, ...any_random_points.features];
+                    let any_random_points = turf.random.randomPoint(amount - first_94_len, {bbox: bboxCircle});
+                    first_94.features = [...first_94.features, ...any_random_points.features];
                     break;
                   }
                 }
 
-                // build first death object from the first 47 deaths object
+                // build first death object from the first 94 deaths object
 
-                let first = { ... first_47 };
-                first.features = [...first_47.features].slice(0,1);
+                let first = { ... first_94 };
+                first.features = [...first_94.features].slice(0,1);
 
                 let data = {
                   'first-death' : first,
-                  'first-deaths': first_47
+                  'first-deaths': first_94
                 }
 
                 //console.log(data);
