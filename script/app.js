@@ -6,13 +6,15 @@ let app = {
 
   tilesets : {
            
-    'places' : {
+    places : {
+      'url'    : 'mapbox://tiagombp.534qejcf',
       'source' : 'places-src',
       'layer'  : 'vanishing_places-0bojlt',
       'id'     : 'place_id'
     },
 
-    'counties' : {
+    counties : {
+      'url'    : 'mapbox://tiagombp.3udgcig6',
       'source' : 'counties-src',
       'layer'  : 'counties-dl6qdm',
       'id'     : 'GEOID'
@@ -1940,13 +1942,13 @@ console.log(url)
 
           load : function() {
 
-            if ( !map.getSource( 'places-src' ) ) {
+            if ( !map.getSource( app.tilesets.places.source ) ) {
 
               map.addSource(
-                'places-src',
+                app.tilesets.places.source,
                 {
                   'type' : 'vector',
-                  'url' : 'mapbox://tiagombp.534qejcf'
+                  'url' : app.tilesets.places.url
                 }
               )
 
@@ -1957,8 +1959,8 @@ console.log(url)
               map.addLayer({
                   'id': 'places',
                   'type': 'fill',
-                  'source': 'places-src',
-                  'source-layer': 'vanishing_places-0bojlt',
+                  'source': app.tilesets.places.source,
+                  'source-layer': app.tilesets.places.layer,
                   'paint': {
                       'fill-opacity' : 0,
                       'fill-outline-color' : 'transparent',
@@ -1969,13 +1971,13 @@ console.log(url)
 
             }
 
-            if ( !map.getSource( 'counties-src' ) ) {
+            if ( !map.getSource( app.tilesets.counties.source ) ) {
 
               map.addSource(
-                'counties-src',
+                app.tilesets.counties.source,
                 {
                   'type' : 'vector',
-                  'url' : 'mapbox://tiagombp.3udgcig6'
+                  'url' : app.tilesets.counties.url
                 }
               )
 
@@ -1986,8 +1988,8 @@ console.log(url)
               map.addLayer({
                   'id': 'counties',
                   'type': 'fill',
-                  'source': 'counties-src',
-                  'source-layer': 'counties-dl6qdm',
+                  'source': app.tilesets.counties.source,
+                  'source-layer': app.tilesets.counties.layer,
                   'paint': {
                       'fill-opacity' : 0,
                       'fill-outline-color' : 'transparent',
