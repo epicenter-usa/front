@@ -824,8 +824,6 @@ let app = {
                     : key == 'full_radius'         ? app.variables.result.radius.today
                     :                                app.variables.result.nearest_landmark.radius.today;
 
-                  console.log(key, radius)
-
                   app.story.map.controls.people.highlight.insideCircle.initialize(
                     radius.inner_point,
                     radius.outer_point,
@@ -1006,7 +1004,7 @@ let app = {
 
           let city = app.variables.result.vanishing_place
 
-          console.log("City vanished", city)
+          //console.log("City vanished", city)
 
           app.story.map.controls.marker.toggle( false, 0 )
           app.story.map.controls.marker.toggleLabel( false, 0 )
@@ -1186,8 +1184,6 @@ let app = {
           active = document.querySelector( '.swiper-slide' )
 
         let step = active.dataset.step
-
-        console.log("Step", step)
 
         app.element.dataset.step = step
         app.story.steps.show[ step ]()
@@ -1389,7 +1385,7 @@ let app = {
           .then( response => response.json() )
           .then( data => {
 
-            console.log(data);//TIRAR DEPOIS
+            //console.log(data);
 
             if ( data.error ) {
 
@@ -1669,8 +1665,6 @@ let app = {
               }
             )
 
-            console.log('dentro initializa', key, circle)
-
             app.story.map.controls.circle.list[ key ] = circle
 
             app.story.map.controls.circle.list[ key ] 
@@ -1749,12 +1743,9 @@ let app = {
 
                 let list = app.story.map.controls.people.highlight.insideCircle.list
 
-                for ( let key of Object.keys(list) ) {
+                for ( let key of Object.keys(list) )
                   app.story.map.controls.people.highlight.insideCircle.toggle( false, key )
-                  console.log(key)
-                }
                   
-
               },
 
               toggle : function( option, key ) {
@@ -2068,8 +2059,6 @@ let app = {
             let wouldVanish = app.element.dataset.wouldVanish === "true";
 
             let geography = (wouldVanish ? 'counties' : 'places');
-
-            console.log(geography)
 
           	map.addLayer( {
           			'id': 'location_highlight',
