@@ -498,7 +498,7 @@ let app = {
           url += address
           url += '.json'
           url += '?'
-          url += 'country=us'
+          url += 'country=us,pr,as,gu,vi,mp,um'
           url += '&'
           url += 'language=en'
           url += '&'
@@ -506,7 +506,7 @@ let app = {
           url += '&'
           url += 'access_token='
           url += app.story.map.token
-
+console.log(url)
           fetch( url )
             .then( response => response.json() )
             .then( data => app.search.suggestions.handle( data ) )
@@ -565,26 +565,30 @@ let app = {
             feature.primary += feature.text
             feature.primary += feature.address ? ', ' + feature.address : ''
 
-            for ( let context of feature.context ) {
+            if ( feature.context ) {
 
-              feature.secondary += context.id.includes( 'poi'          ) ? ', ' + context.text : ''
-              feature.secondary += context.id.includes( 'neighborhood' ) ? ', ' + context.text : ''
-              feature.secondary += context.id.includes( 'locality'     ) ? ', ' + context.text : ''
-              feature.secondary += context.id.includes( 'place'        ) ? ', ' + context.text : ''
-              feature.secondary += context.id.includes( 'district'     ) ? ', ' + context.text : ''
+              for ( let context of feature.context ) {
 
-              // fix Rio de Janeiro addresses (they do not have short_code property)
-              if ( context.id.includes( 'region' ) ) {
-
-                if ( 'short_code' in context )
-                  feature.secondary += ', ' + context.short_code.replace( 'BR-', '' )
-                else
-                  feature.secondary += context.text === 'Rio de Janeiro' ? ', RJ' : ''
-
+                feature.secondary += context.id.includes( 'poi'          ) ? ', ' + context.text : ''
+                feature.secondary += context.id.includes( 'neighborhood' ) ? ', ' + context.text : ''
+                feature.secondary += context.id.includes( 'locality'     ) ? ', ' + context.text : ''
+                feature.secondary += context.id.includes( 'place'        ) ? ', ' + context.text : ''
+                feature.secondary += context.id.includes( 'district'     ) ? ', ' + context.text : ''
+  
+                // // fix Rio de Janeiro addresses (they do not have short_code property)
+                // if ( context.id.includes( 'region' ) ) {
+  
+                //   if ( 'short_code' in context )
+                //     feature.secondary += ', ' + context.short_code.replace( 'BR-', '' )
+                //   else
+                //     feature.secondary += context.text === 'Rio de Janeiro' ? ', RJ' : ''
+  
+                // }
+  
+                if ( !feature.postcode )
+                  feature.postcode += context.id.includes( 'postcode' ) ? ' – ' + context.text : ''
+  
               }
-
-              if ( !feature.postcode )
-                feature.postcode += context.id.includes( 'postcode' ) ? ' – ' + context.text : ''
 
             }
 
@@ -1385,7 +1389,7 @@ let app = {
           .then( response => response.json() )
           .then( data => {
 
-            //console.log(data);
+            console.log(data);
 
             if ( data.error ) {
 
