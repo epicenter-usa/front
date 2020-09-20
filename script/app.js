@@ -14,9 +14,9 @@ let app = {
     },
 
     counties : {
-      'url'    : 'mapbox://tiagombp.3udgcig6',
+      'url'    : 'mapbox://tiagombp.3sghzwwl',
       'source' : 'counties-src',
-      'layer'  : 'counties-dl6qdm',
+      'layer'  : 'all_counties-4eo3fz',
       'id'     : 'GEOID'
     }
   },
