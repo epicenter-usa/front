@@ -141,6 +141,10 @@ p + p {
   margin-top: calc( 1.8rem * 1.5 );
 }
 
+strong {
+  font-weight: bold;
+}
+
 small {
   font-size: 1.4rem;
   color: var(--light-50);
