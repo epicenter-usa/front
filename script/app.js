@@ -5,7 +5,7 @@ let app = {
   api : 'https://epicenter-covid.elections.aws.wapo.pub/', //'https://tiago.live/',
 
   tilesets : {
-           
+
     places : {
       'url'    : 'mapbox://tiagombp.534qejcf',
       'source' : 'places-src',
@@ -563,9 +563,9 @@ console.log(url)
             feature.primary = ''
             feature.secondary = ''
             feature.postcode = ''
-
+            
+            feature.primary += feature.address ? feature.address + ' ' : ''
             feature.primary += feature.text
-            feature.primary += feature.address ? ', ' + feature.address : ''
 
             if ( feature.context ) {
 
@@ -576,20 +576,17 @@ console.log(url)
                 feature.secondary += context.id.includes( 'locality'     ) ? ', ' + context.text : ''
                 feature.secondary += context.id.includes( 'place'        ) ? ', ' + context.text : ''
                 feature.secondary += context.id.includes( 'district'     ) ? ', ' + context.text : ''
-  
-                // // fix Rio de Janeiro addresses (they do not have short_code property)
-                // if ( context.id.includes( 'region' ) ) {
-  
-                //   if ( 'short_code' in context )
-                //     feature.secondary += ', ' + context.short_code.replace( 'BR-', '' )
-                //   else
-                //     feature.secondary += context.text === 'Rio de Janeiro' ? ', RJ' : ''
-  
-                // }
-  
+
+                if ( context.id.includes( 'region' ) ) {
+
+                  if ( 'short_code' in context )
+                    feature.secondary += ', ' + context.short_code.replace( 'US-', '' )
+
+                }
+
                 if ( !feature.postcode )
-                  feature.postcode += context.id.includes( 'postcode' ) ? ' – ' + context.text : ''
-  
+                  feature.postcode += context.id.includes( 'postcode' ) ? ' ' + context.text : ''
+
               }
 
             }
@@ -825,7 +822,7 @@ console.log(url)
 
                 for ( let key of ['intermediate_radius', 'full_radius', 'landmark_radius'] ) {
 
-                  let radius = 
+                  let radius =
                       key == 'intermediate_radius' ? app.variables.result.radius.first_stop
                     : key == 'full_radius'         ? app.variables.result.radius.today
                     :                                app.variables.result.nearest_landmark.radius.today;
@@ -1603,8 +1600,8 @@ console.log(url)
         circle : {
 
           list : {
-            'intermediate_radius' : null, 
-            'full_radius'         : null, 
+            'intermediate_radius' : null,
+            'full_radius'         : null,
             'landmark_radius'     : null
           },
 
@@ -1673,7 +1670,7 @@ console.log(url)
 
             app.story.map.controls.circle.list[ key ] = circle
 
-            app.story.map.controls.circle.list[ key ] 
+            app.story.map.controls.circle.list[ key ]
 
           },
 
@@ -1740,8 +1737,8 @@ console.log(url)
             insideCircle : {
 
               list : {
-                'intermediate_radius' : null, 
-                'full_radius'         : null, 
+                'intermediate_radius' : null,
+                'full_radius'         : null,
                 'landmark_radius'     : null
               },
 
@@ -1751,7 +1748,7 @@ console.log(url)
 
                 for ( let key of Object.keys(list) )
                   app.story.map.controls.people.highlight.insideCircle.toggle( false, key )
-                  
+
               },
 
               toggle : function( option, key ) {
