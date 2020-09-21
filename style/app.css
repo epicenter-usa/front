@@ -1713,6 +1713,7 @@ input[type="checkbox"]:checked + div .switch::before {
   align-items: center;
   margin: 0;
   font-size: 48px;
+  text-align: center;
 }
 
 .poster-location h1 span {
@@ -1778,7 +1779,7 @@ input[type="checkbox"]:checked + div .switch::before {
 }
 
 .poster-content > p {
-  width: 560px;
+  width: 572px;
   text-align: center;
 }
 
