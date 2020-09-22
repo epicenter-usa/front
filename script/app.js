@@ -1177,6 +1177,33 @@ console.log(url)
 
         },
 
+        "Related article" : function() {
+
+          app.story.map.controls.marker.toggle( true, 0 )
+          app.story.map.controls.marker.toggleLabel( true, 0 )
+          app.story.map.controls.marker.toggle( false, 1 )
+          app.story.map.controls.marker.toggleLabel( false, 1 )
+          app.story.map.controls.marker.toggle( false, 2 )
+          app.story.map.controls.marker.toggleLabel( false, 2 )
+
+          app.poster.button.toggle( false )
+          app.story.map.controls.labels.toggle( false )
+          app.story.map.controls.bubble.toggle( false )
+          app.story.map.controls.people.toggle( { opacity: 1, radius: 1, color: '#fff' } )
+          app.story.map.controls.people.highlight.someInsideCircle.toggle( false, 'first-death' )
+          app.story.map.controls.people.highlight.someInsideCircle.toggle( false, 'first-deaths' )
+          app.story.map.controls.people.highlight.insideCircle.toggle( true, 'full_radius' )
+          app.story.map.controls.people.highlight.insideCircle.toggle( false, 'landmark_radius' )
+          app.story.map.controls.people.highlight.insideCircle.toggle( false, 'intermediate_radius' )
+          app.story.map.controls.circle.toggle( true, 'full_radius' )
+          app.story.map.controls.circle.toggle( false, 'landmark_radius' )
+          app.story.map.controls.circle.toggle( false, 'intermediate_radius' )
+          app.story.map.controls.circle.fitOnScreen( 'full_radius' )
+          app.story.map.controls.location.toggle.highlight( false )
+          app.story.map.controls.location.toggle.mask( false )
+
+        },
+
       },
 
       handle : function() {
