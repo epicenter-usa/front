@@ -563,7 +563,7 @@ console.log(url)
             feature.primary = ''
             feature.secondary = ''
             feature.postcode = ''
-            
+
             feature.primary += feature.address ? feature.address + ' ' : ''
             feature.primary += feature.text
 
@@ -2517,12 +2517,14 @@ console.log(url)
 
       }
 
+      /* disables camera icon
       document.querySelector( '.next' ).addEventListener( 'click', function() {
 
         if ( this.classList.contains( 'swiper-button-disabled' ) )
           app.pages.open('poster')
 
       } )
+      */
 
     }
 

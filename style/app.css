@@ -1207,9 +1207,11 @@ button {
   border-radius: 0 2.4rem 2.4rem 0;
 }
 
+/* disable camera icon
 .next.swiper-button-disabled {
   background: var(--highlight);
 }
+*/
 
 @media ( min-width:800px ) {
 
@@ -1217,8 +1219,13 @@ button {
     background: var(--dark-05);
   }
 
+  /* disable camera icon
   .next.swiper-button-disabled:hover {
     background: var(--highlight-shade);
+  }
+  */
+  .next.swiper-button-disabled {
+    pointer-events: none;
   }
 
 }
@@ -1308,6 +1315,7 @@ button {
   display: none;
 }
 
+/* disables camera icon
 .next .material-icons:nth-child(2),
 .next.swiper-button-disabled .material-icons:nth-child(1) {
   display: none;
@@ -1316,6 +1324,7 @@ button {
   display: flex;
   color: var(--light-100);
 }
+*/
 
 .controls label {
   cursor: pointer
