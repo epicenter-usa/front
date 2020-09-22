@@ -187,7 +187,13 @@ let app = {
       "Nearest Landmark" : function() {
 
         let city = app.variables.result.nearest_landmark;
-        return city.place_name + ' (' + city.state_abbr + ')'
+
+        return city.place_name  + (
+          city.state_abbr == '' ?
+          '' :
+          ' (' + city.state_abbr + ')'
+        )
+
 
       },
 
@@ -508,7 +514,9 @@ let app = {
           url += '&'
           url += 'access_token='
           url += app.story.map.token
-console.log(url)
+          
+          //console.log( "URL for Geocoding API call", url)
+          
           fetch( url )
             .then( response => response.json() )
             .then( data => app.search.suggestions.handle( data ) )
@@ -555,6 +563,8 @@ console.log(url)
     suggestions : {
 
       handle : function( data ) {
+
+        //console.log("Response from Geocoding API", data)
 
         if ( data.features ) {
 
@@ -1415,7 +1425,7 @@ console.log(url)
           .then( response => response.json() )
           .then( data => {
 
-            console.log(data);
+            //console.log("Response from Backend API ", data);
 
             if ( data.error ) {
 
@@ -2459,7 +2469,7 @@ console.log(url)
         map.addEventListener( 'load', app.poster.map.handle )
         map.src = url;
 
-        console.log( url )
+        //console.log( "URL for static image call", url )
 
       }
 
