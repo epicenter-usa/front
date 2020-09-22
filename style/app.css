@@ -22,6 +22,9 @@
   --highlight-rgb:   215, 165, 101;
   --highlight-shade: rgba( 157, 106, 41 );
 
+  --muted: rgba( 85, 85, 85 );
+  --muted-rgb: 85, 85, 85;
+
   --swiper-theme-color: rgba( 215, 165, 101, 1 );
 
 }
@@ -1376,7 +1379,7 @@ input[type="checkbox"] + div .switch {
   display: flex;
   width: 2.4rem;
   height: 1.2rem;
-  background: rgba( var(--highlight-rgb), .5 );
+  background: rgba( var(--muted-rgb), .5 );
   border-radius: .6rem;
   margin-right: .8rem;
   padding: .3rem;
@@ -1446,7 +1449,7 @@ input[type="checkbox"]:checked + div .switch::before {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #555;
+  background: var(--muted);
   padding: 0;
   border-radius: .8rem;
   overflow: hidden;
