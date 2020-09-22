@@ -197,6 +197,13 @@ button {
   cursor: pointer;
 }
 
+.steps [data-step] .button {
+  background: var(--highlight);
+  height: 4.8rem;
+  border-radius: 999px;
+  margin-top: 1.2rem;
+}
+
 .kicker {
   cursor: default;
   user-select: auto;
@@ -219,7 +226,8 @@ h1 .kicker {
   visibility: hidden;
 }
 
-.button .material-icons + span {
+.button .material-icons + span,
+.button span + .material-icons {
   margin-left: .8rem;
 }
 
@@ -1077,6 +1085,18 @@ button {
   color: var(--light-100);
 }
 
+.story nav .close .start-over {
+  display: none;
+}
+
+.story nav .close .start-over.material-icons {
+  margin: 0;
+}
+
+.start-over-label {
+  width: 0px;
+}
+
 .button.share {
   background: var(--highlight);
   height: 4.8rem;
@@ -1214,6 +1234,14 @@ button {
 */
 
 @media ( min-width:800px ) {
+
+  .story nav .close .material-icons:first-child {
+    display: none;
+  }
+
+  .story nav .close .start-over {
+    display: flex;
+  }
 
   .arrows button:hover {
     background: var(--dark-05);
@@ -1483,7 +1511,16 @@ input[type="checkbox"]:checked + div .switch::before {
   pointer-events: all;
 }
 
-[data-step="Related article"] .controls {
+[data-step="Related article"] .story nav .close .start-over {
+  display: flex;
+}
+
+[data-step="Related article"] .story nav .close .material-icons:first-child {
+  display: none;
+}
+
+[data-step="Related article"] .controls,
+[data-step="Related article"] .mapboxgl-control-container {
   opacity: 0;
   pointer-events: none;
 }
